@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { SplashScreen } from '@capacitor/splash-screen';
 import { DatabaseService } from './services/database.service';
 import { Platform } from '@ionic/angular';
 import { Device } from '@capacitor/device';
@@ -30,8 +29,5 @@ export class AppComponent {
         this.load = load;
       })
     })
-
-    //await this.database.initializPlugin();
-    //SplashScreen.hide();
   }
 }

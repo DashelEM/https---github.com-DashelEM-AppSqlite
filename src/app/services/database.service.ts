@@ -6,18 +6,6 @@ import { CapacitorSQLite, JsonSQLite, SQLiteConnection, SQLiteDBConnection } fro
 import { Preferences } from '@capacitor/preferences';
 import { HttpClient } from '@angular/common/http';
 
-
-//const DB_USERS = 'myuserdb';
-
-/*export interface Vivencia {
-  id: Number;
-  titulo: string;
-  fecha: string;
-  descripcion: string;
-  foto: string; // Ruta de la foto
-  audio: string; // Ruta del audio
-}*/
-
 @Injectable({
   providedIn: 'root'
 })
@@ -27,9 +15,6 @@ export class DatabaseService {
   public isWeb: boolean;
   public isIOS: boolean;
   public dbName: string;
-  /*private sqlite: SQLiteConnection = new SQLiteConnection(CapacitorSQLite);
-  private db!: SQLiteDBConnection;
-  private vivencias: WritableSignal<Vivencia []> = signal<Vivencia []>([]);*/
 
   constructor(private http: HttpClient) {
     this.dbReady = new BehaviorSubject(false);
@@ -103,66 +88,5 @@ export class DatabaseService {
       }
       return this.dbName;
     }
-
 }
-/*
-  async initializPlugin(){
-    this.db = await this.sqlite.createConnection(
-      DB_USERS,
-      false,
-      'no-encryption',
-      1,
-      false
-    );
-
-    await this.db.open();
-
-    const schema = `CREATE TABLE IF NOT EXISTS vivencias (
-      id INTEGER PRIMARY KEY AUTOINCREMENT,
-      title TEXT NOT NULL,
-      date TEXT NOT NULL,
-      description TEXT NOT NULL,
-      photo TEXT NOT NULL,
-      audio TEXT NOT NULL
-    );`;
-
-    await this.db.execute(schema);
-      this.loadVivencias();
-      return true;
-  }
-  getVivencias(){
-    return this.vivencias;
-  }
-
-  //CRUD
-  async loadVivencias(){
-    const vivencias = await this.db.query('SELECT * FROM vivencias');
-    this.vivencias.set(vivencias.values || []);
-  }
-
-  async addVivencias(title: string, date: string, description: string, foto: string, audio: string){
-    const query = `INSERT INTO vivencias (title, date, description, photo, audio) VALUES ('${title}', '${date}', '${description}', '${foto}', '${audio}')`;
-    const result = await this.db.query(query);
-
-    this.loadVivencias();
-    return result;
-  }
-
-  async updateVivenciasById(id: string){
-    const query = `UPDATE FROM vivencias WHERE id=${id}`;
-    const result = await this.db.query(query);
-
-    this.loadVivencias();
-    return result;
-  }
-
-  async deleteVivencias(id: string){
-    const query = `DELETE FROM vivencias WHERE id=${id}`;
-    const result = await this.db.query(query);
-
-    this.loadVivencias();
-    return result;
-  }
-}
-*/
 
