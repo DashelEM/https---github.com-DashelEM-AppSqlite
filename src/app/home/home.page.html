@@ -1,20 +1,67 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Blank
+      Listado
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
+
+  <ion-item>
+    <ion-input label="Nombre: " [(ngModel)]="name" name="name"></ion-input>
+    <ion-button (click)="create()">
+      <ion-icon name="add-outline"></ion-icon>
+    </ion-button>
+  </ion-item>
+
+  <ion-list>
+    <ion-item-sliding *ngFor="let name of names">
+      <ion-item>
+        <ion-label>{{name}}</ion-label>
+      </ion-item>
+      <ion-item-options>
+        <ion-item-option color="warning" (click)="update(name)">
+          <ion-icon name="pencil-outline" slot="icon-only"></ion-icon>
+        </ion-item-option>
+        <ion-item-option color="danger" (click)="delete(name)">
+          <ion-icon name="trash-outline" slot="icon-only"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+
+<!--  <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
+      <ion-title size="large">Listado</ion-title>
     </ion-toolbar>
   </ion-header>
 
+  <ion-input [(ngModel)]="newVivenciaTitle">Titulo</ion-input>
+  <ion-input [(ngModel)]="newVivenciaDate">Fecha</ion-input>
+  <ion-input [(ngModel)]="newVivenciaDescription">Descripcion</ion-input>
+  <ion-input [(ngModel)]="newVivenciaPhoto">foto</ion-input>
+  <ion-input [(ngModel)]="newVivenciaAudio">audio</ion-input>
+
+  <ion-button (click)="createVivencia()">Agregar</ion-button>
+
   <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+    
+    <ion-item *ngFor="let vivencia of vivencias()">
+      <ion-checkbox
+        aria-label="Label"
+        slot="start"
+        (ionChange)="updateVivencia(vivencia)"
+      ></ion-checkbox>
+      <ion-label>{{vivencia.titulo}}</ion-label>
+      <ion-button
+        slot="end"
+        (click)="deleteVivencia(vivencia)"
+        fill="clear"
+        color="danger">
+    
+      <ion-icon name="trash" slot="icon-only"></ion-icon>
+    </ion-button>  
+    </ion-item>
+    </div> -->
 </ion-content>
